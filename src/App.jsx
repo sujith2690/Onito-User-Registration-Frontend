@@ -1,13 +1,22 @@
-import { useState } from 'react'
+import React from 'react'
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import ErrorPage from './components/ErrorPage'
+import Home from './components/pages/home/Home'
+import UserRegistration from './components/pages/registration/UserRegistration'
+import RegisteredUser from './components/pages/list/RegisteredUser'
 
-import Home from './components/Home'
 
-function App() {
- const [choose, setChoose] = useState(false)
-
+const App = () => {
   return (
     <div>
-      <Home/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/registration" element={<UserRegistration/>} />
+          <Route path="/list" element={<RegisteredUser />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }
